@@ -52,6 +52,23 @@ public class ApiController {
         return resp;
     }
 
+    @RequestMapping(value = "/summary", method = RequestMethod.GET)
+    @ResponseBody
+    public ApiResponse<String> summary() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("avg select asr: ");
+        sb.append( (float)totalSelectAsrCost.get() / Math.max(totalSelectAsrCount.get(), 1));
+        sb.append(" ms / select count: ");
+        sb.append(totalSelectAsrCount.get());
+        sb.append('\n');
+        sb.append("avg release asr: ");
+        sb.append( (float)totalReleaseAsrCost.get() / Math.max(totalReleaseAsrCount.get(), 1));
+        sb.append(" ms / release count: ");
+        sb.append(totalReleaseAsrCount.get());
+        sb.append('\n');
+        return  ApiResponse.<String>builder().code("0000").data(sb.toString()).build();
+    }
+
     @Autowired
     private ASRService asrService;
 
