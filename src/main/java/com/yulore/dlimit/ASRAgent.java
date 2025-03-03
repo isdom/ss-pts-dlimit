@@ -75,12 +75,12 @@ public class ASRAgent {
         }
     }
 
-    public void decConnection() {
+    public long decConnection() {
         // 减少 连接中或已连接的计数
         final long current = _rCounter.decrementAndGet();
         // 更新本地计数器用于监控
         _connectingOrConnectedCount.decrementAndGet();
-        log.info("release asr({}): {}/{}", this.name, current, this.limit);
+        return current;
     }
 
     public void incConnected() {

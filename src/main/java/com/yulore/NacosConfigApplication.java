@@ -8,7 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableDiscoveryClient
-@EnableFeignClients
 @SpringBootApplication
 @NacosPropertySource(dataId = "${NACOS_DATAID}", type= ConfigType.YAML, autoRefreshed = true)
 public class NacosConfigApplication {

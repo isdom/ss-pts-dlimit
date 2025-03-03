@@ -55,7 +55,6 @@ class ASRServiceImpl implements ASRService {
         for (ASRAgent agent : _asrAgents) {
             final ASRAgent selected = agent.checkAndSelectIfHasIdle();
             if (null != selected) {
-                log.info("select asr({}): {}/{}", agent.getName(), agent.get_connectingOrConnectedCount().get(), agent.getLimit());
                 return selected;
             }
         }
